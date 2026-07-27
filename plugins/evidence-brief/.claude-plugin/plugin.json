@@ -1,0 +1,23 @@
+{
+  "name": "evidence-brief",
+  "version": "1.0.0",
+  "description": "Answer a clinical question with the evidence separated by how well it is established and every citation either retrieved and checkable or explicitly absent, never fabricated. Use when the user asks what the evidence says, asks for a literature summary, asks to look something up, asks for citations or references, or asks whether a practice is still supported. Produces a brief with a verification block, and refuses to invent a reference under any circumstance.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "evidence",
+    "literature",
+    "citations",
+    "research",
+    "verification"
+  ]
+}

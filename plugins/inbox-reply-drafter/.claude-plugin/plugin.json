@@ -1,0 +1,23 @@
+{
+  "name": "inbox-reply-drafter",
+  "version": "1.0.0",
+  "description": "Triage a stack of patient portal messages and draft replies at the right reading level, separating what can be answered in a message from what needs a call, a visit, or the emergency department today. Use when the user is buried in their inbox, asks for help with portal messages, MyChart messages, patient emails, refill requests, result questions, or says they spend an hour a day on messages. Produces a triage list and draft replies for the clinician to edit and send.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "inbox",
+    "patient-messages",
+    "portal",
+    "triage",
+    "communication"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "forms-and-letters",
+  "version": "1.0.0",
+  "description": "Draft the non-clinical paperwork pile that no scribe touches. FMLA and disability paperwork, work and school notes, accommodation letters, DME and home health justification, camp and sports forms, and referral letters. Use when the user asks for help with a form, a letter for a patient, FMLA, disability, a school or work note, an accommodation request, a DME letter, home health orders, or says the forms are worse than the charting. Produces a draft the clinician verifies and signs.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "forms",
+    "letters",
+    "fmla",
+    "disability",
+    "administrative",
+    "paperwork"
+  ]
+}

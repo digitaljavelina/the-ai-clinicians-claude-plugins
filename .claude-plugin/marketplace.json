@@ -3,6 +3,7 @@
   "owner": {
     "name": "The AI Clinicians"
   },
+  "description": "Claude Code plugins for clinicians. Documentation, coding, prior auth, evidence, PHI de-identification, and AI adoption workflows, each returning a draft the clinician verifies and signs.",
   "plugins": [
     {
       "name": "bag-submission",
@@ -20,6 +21,66 @@
       "name": "phi-redactor",
       "source": "./plugins/phi-redactor",
       "description": "De-identify PHI in clinical text and documents entirely on the local machine, with no network call at redaction time. Reads .txt, .md, .pdf, .docx, .xlsx, and .pptx, and offers a reversible mode so text can be de-identified, processed elsewhere, then restored. Requires a one-time model download",
+      "version": "1.0.0"
+    },
+    {
+      "name": "scribe-note-audit",
+      "source": "./plugins/scribe-note-audit",
+      "description": "Audit an AI scribe's draft note before signing it, hunting for invented specifics, normals nobody examined, misattributed statements, and flattened medical decision-making. Returns a line-level correction list, never a rewritten note",
+      "version": "1.0.0"
+    },
+    {
+      "name": "interval-note-builder",
+      "source": "./plugins/interval-note-builder",
+      "description": "Build the carry-forward scaffold for a progress, rounding, or follow-up note so active problems do not vanish when nobody mentions them out loud today. Returns a problem scaffold and status questions, never a finished note",
+      "version": "1.0.0"
+    },
+    {
+      "name": "inbox-reply-drafter",
+      "source": "./plugins/inbox-reply-drafter",
+      "description": "Triage a stack of patient portal messages and draft replies at the right reading level, separating what can be answered in a message from what needs a call, a visit, or the emergency department today",
+      "version": "1.0.0"
+    },
+    {
+      "name": "prior-auth-packet",
+      "source": "./plugins/prior-auth-packet",
+      "description": "Build a prior authorization request or letter of medical necessity around the payer's own coverage criteria, mapping each criterion to the documentation that meets it and naming the ones that are not, plus a peer-to-peer prep sheet",
+      "version": "1.0.0"
+    },
+    {
+      "name": "forms-and-letters",
+      "source": "./plugins/forms-and-letters",
+      "description": "Draft the non-clinical paperwork pile no scribe touches. FMLA and disability forms, work and school notes, accommodation letters, DME and home health justification, camp and sports forms, and referral letters",
+      "version": "1.0.0"
+    },
+    {
+      "name": "discharge-summary-builder",
+      "source": "./plugins/discharge-summary-builder",
+      "description": "Assemble a discharge summary, transfer note, or service handoff from fragmented source documents, with a dedicated pass for what is still unresolved and who owns it after the patient leaves",
+      "version": "1.0.0"
+    },
+    {
+      "name": "evidence-brief",
+      "source": "./plugins/evidence-brief",
+      "description": "Answer a clinical question with the evidence separated by how well it is established and every citation either retrieved and checkable or explicitly marked absent. Refuses to invent a reference under any circumstance",
+      "version": "1.0.0"
+    },
+    {
+      "name": "differential-challenger",
+      "source": "./plugins/differential-challenger",
+      "description": "Argue against a clinician's working diagnosis or plan instead of answering for them, testing for anchoring, premature closure, and the demographic gaps where evidence stops transferring. Never produces a diagnosis",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ai-consent-and-policy",
+      "source": "./plugins/ai-consent-and-policy",
+      "description": "Build the patient-facing script for disclosing an AI scribe, handle the opt-out gracefully, and assemble the questions a practice must answer before recording encounters. Produces scripts and a question list for counsel, never a legal determination",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ai-tool-evaluator",
+      "source": "./plugins/ai-tool-evaluator",
+      "description": "Design a real trial of a clinical AI tool before buying it, with a baseline measured first, a decision rule written in advance, and the questions that separate a demo from a workflow. Never recommends a specific product",
       "version": "1.0.0"
     }
   ]

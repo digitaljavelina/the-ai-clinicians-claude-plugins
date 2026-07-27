@@ -1,0 +1,23 @@
+{
+  "name": "interval-note-builder",
+  "version": "1.0.0",
+  "description": "Build the carry-forward scaffold for a progress, rounding, continuity, or follow-up note so active problems do not vanish when nobody mentions them out loud today. Use when the user says their AI scribe is fine for admissions but terrible for daily or follow-up notes, that problems keep dropping off, that they keep rewriting prompts for continuity notes, or asks for help with a rounding note, interval note, progress note, or day-two-onward documentation. Produces a problem scaffold and a status question list, never a finished note.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "documentation",
+    "progress-note",
+    "rounding",
+    "continuity",
+    "handoff"
+  ]
+}

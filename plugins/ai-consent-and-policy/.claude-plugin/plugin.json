@@ -1,0 +1,24 @@
+{
+  "name": "ai-consent-and-policy",
+  "version": "1.0.0",
+  "description": "Build the patient-facing script for disclosing an AI scribe, handle the opt-out gracefully, and assemble the questions a practice must answer before recording patient encounters. Use when the user asks how to tell patients about an AI scribe, what to say when a patient says no, how to handle opt-outs, whether they need consent to record, what policy their practice needs, or whether they are allowed to use an AI tool at work. Produces scripts and a question list for counsel and compliance, never a legal determination.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "consent",
+    "policy",
+    "compliance",
+    "ai-scribe",
+    "privacy",
+    "practice-management"
+  ]
+}

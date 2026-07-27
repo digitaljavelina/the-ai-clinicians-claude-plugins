@@ -1,0 +1,22 @@
+{
+  "name": "discharge-summary-builder",
+  "version": "1.0.0",
+  "description": "Assemble a discharge summary, transfer note, or service handoff from fragmented source documents, with a dedicated pass for what is still unresolved and who owns it after the patient leaves. Use when the user asks for help with a discharge summary, D/C summary, transfer note, sign-out, service change handoff, or says the auto-generated summary needs too much fixing. Produces a structured draft plus an open-loop list, never a signed summary.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "discharge-summary",
+    "handoff",
+    "transitions-of-care",
+    "documentation"
+  ]
+}

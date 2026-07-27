@@ -1,0 +1,23 @@
+{
+  "name": "ai-tool-evaluator",
+  "version": "1.0.0",
+  "description": "Design a real trial of a clinical AI tool before buying it, with a baseline measured first, a decision rule written in advance, and the questions that separate a demo from a workflow. Use when the user asks whether an AI scribe or other clinical AI tool is worth the cost, how to pilot one, how to compare vendors, what to ask on a sales call, or whether it will pay for itself in a small practice. Produces a pilot protocol and a vendor question list, never a recommendation of a specific product.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "procurement",
+    "pilot",
+    "vendor-evaluation",
+    "ai-scribe",
+    "practice-management"
+  ]
+}

@@ -13,9 +13,28 @@ Add this marketplace to Claude Code:
 Then install a plugin:
 
 ```sh
+# Community and privacy
 /plugin install bag-submission@the-ai-clinicians-claude-plugins
-/plugin install em-code-advisor@the-ai-clinicians-claude-plugins
 /plugin install phi-redactor@the-ai-clinicians-claude-plugins
+
+# Documentation
+/plugin install scribe-note-audit@the-ai-clinicians-claude-plugins
+/plugin install interval-note-builder@the-ai-clinicians-claude-plugins
+/plugin install discharge-summary-builder@the-ai-clinicians-claude-plugins
+
+# Administrative load
+/plugin install inbox-reply-drafter@the-ai-clinicians-claude-plugins
+/plugin install prior-auth-packet@the-ai-clinicians-claude-plugins
+/plugin install forms-and-letters@the-ai-clinicians-claude-plugins
+/plugin install em-code-advisor@the-ai-clinicians-claude-plugins
+
+# Reasoning and evidence
+/plugin install evidence-brief@the-ai-clinicians-claude-plugins
+/plugin install differential-challenger@the-ai-clinicians-claude-plugins
+
+# Adoption and policy
+/plugin install ai-tool-evaluator@the-ai-clinicians-claude-plugins
+/plugin install ai-consent-and-policy@the-ai-clinicians-claude-plugins
 ```
 
 ## Available Plugins
@@ -25,14 +44,26 @@ Then install a plugin:
 | `bag-submission` | 1.1.2   | Turn a prompt, skill, or workflow a clinician built into a finished "Bag Submission" post for The AI Clinicians' Medical Bag community library. Interviews one field at a time, enforces the three rules the bag runs on (returns a draft not a final artifact, bans invention, ends with a real verify), keeps every entry patient-data-free, tests it on a synthetic case, hands back a paste-ready post, and saves the entry as a markdown file. |
 | `em-code-advisor` | 1.0.0 | Assign the correct E/M code from a clinical note and justify it element by element against the 2021/2023 CPT MDM grid and time thresholds, across office/outpatient, hospital inpatient/observation, emergency department, nursing facility, and home/residence settings. Codes the documentation rather than the encounter, binds every code and threshold to bundled reference tables instead of recalling them, and returns documentation gaps as provider queries rather than guesses. |
 | `phi-redactor` | 1.0.0 | De-identify PHI in clinical text and documents entirely on the local machine. Uses Microsoft Presidio plus a clinical NER transformer (`obi/deid_roberta_i2b2`) that catches names in free-text prose that general models miss. Reads `.txt`, `.md`, `.pdf`, `.docx`, `.xlsx`, and `.pptx`. Model libraries are forced offline before they load, so a redaction run makes no network call. A reversible mode writes a local key so text can be de-identified, processed elsewhere, then restored. |
+| `scribe-note-audit` | 1.0.0 | Audit an AI scribe's draft note before signing it, hunting for invented specifics, normals nobody examined, misattributed statements, and flattened medical decision-making. Returns a line-level correction list, never a rewritten note. |
+| `interval-note-builder` | 1.0.0 | Build the carry-forward scaffold for a progress, rounding, or follow-up note so active problems do not vanish when nobody mentions them out loud today. Returns a problem scaffold and status questions, never a finished note. |
+| `inbox-reply-drafter` | 1.0.0 | Triage a stack of patient portal messages and draft replies at the right reading level, separating what can be answered in a message from what needs a call, a visit, or the emergency department today. |
+| `prior-auth-packet` | 1.0.0 | Build a prior authorization request or letter of medical necessity around the payer's own coverage criteria, mapping each criterion to the documentation that meets it and naming the ones that are not, plus a peer-to-peer prep sheet. |
+| `forms-and-letters` | 1.0.0 | Draft the non-clinical paperwork pile no scribe touches. FMLA and disability forms, work and school notes, accommodation letters, DME and home health justification, camp and sports forms, and referral letters. |
+| `discharge-summary-builder` | 1.0.0 | Assemble a discharge summary, transfer note, or service handoff from fragmented source documents, with a dedicated pass for what is still unresolved and who owns it after the patient leaves. |
+| `evidence-brief` | 1.0.0 | Answer a clinical question with the evidence separated by how well it is established and every citation either retrieved and checkable or explicitly marked absent. Refuses to invent a reference under any circumstance. |
+| `differential-challenger` | 1.0.0 | Argue against a clinician's working diagnosis or plan instead of answering for them, testing for anchoring, premature closure, and the demographic gaps where evidence stops transferring. Never produces a diagnosis. |
+| `ai-consent-and-policy` | 1.0.0 | Build the patient-facing script for disclosing an AI scribe, handle the opt-out gracefully, and assemble the questions a practice must answer before recording encounters. Produces scripts and a question list for counsel, never a legal determination. |
+| `ai-tool-evaluator` | 1.0.0 | Design a real trial of a clinical AI tool before buying it, with a baseline measured first, a decision rule written in advance, and the questions that separate a demo from a workflow. Never recommends a specific product. |
 
 ### Prerequisites
 
+Only `phi-redactor` has any. Every other plugin here is prompt-only: no runtime, no
+network, no install beyond the plugin itself.
+
 | Plugin | Requires |
 | ------ | -------- |
-| `bag-submission` | Nothing. Runs with no external dependencies. |
-| `em-code-advisor` | Nothing. Reference tables are bundled; no network, no runtime. |
 | `phi-redactor` | [uv](https://docs.astral.sh/uv/), plus a one-time model download of roughly 1.3 GB. Python itself is not required; uv provisions it. |
+| Everything else | Nothing. Reference tables, where a plugin uses them, are bundled. |
 
 `phi-redactor` runs a one-time setup that downloads the spaCy model and the clinical
 transformer, then writes an `.installed` marker. Claude runs this for you on first use.
@@ -69,6 +100,53 @@ Read the redacted output before trusting it. The tool biases toward over-redacti
 it prints a warning when something identifier-shaped survives, which usually means a
 PDF line-wrap split a value. Scanned or image-only PDFs are refused rather than written
 out empty-but-clean-looking.
+
+### The ten clinical workflow plugins
+
+These ten need no command. Each one carries a description written in the words a tired
+clinician actually types, so Claude loads the right one when you describe the problem.
+Say "my scribe note is wrong again" and the audit runs. Say "this prior auth is eating my
+day" and the packet builder runs.
+
+Each was built against a pain point clinicians described in their own words, and each one
+holds the same rules:
+
+1. **The patient does not have to be in it.** Every one gates on PHI before it reads
+   content, and every one offers a synthetic path for learning.
+2. **The output is a draft, never the artifact.** No signed note, no submitted claim,
+   no sent message, no diagnosis, no consent form, no product recommendation.
+3. **No fabricated citations, codes, statutes, doses, or numbers.** What was not
+   retrieved or supplied is marked absent.
+4. **No fake precision.** No accuracy percentages, no confidence scores, no simulated
+   audit outcomes, no invented ROI figures.
+5. **Every deliverable ends with three checks.** Not a disclaimer. Three specific things
+   to look at, because the clinician is the one who catches the model.
+
+Four of them are worth running as pairs rather than alone:
+
+**The documentation chain.** `interval-note-builder` runs before the encounter and builds
+the problem scaffold. Your scribe drafts. `scribe-note-audit` runs before you sign. The
+second one catches what the first one predicted would go missing.
+
+**The verify chain.** `differential-challenger` attacks the reasoning and hands off to
+`evidence-brief` the moment a challenge turns on what the literature actually says.
+Neither one answers the clinical question, by design.
+
+**The adoption chain.** `ai-tool-evaluator` designs the pilot and stops at the privacy
+question. `ai-consent-and-policy` covers what has to be settled before a single encounter
+gets recorded.
+
+**The billing pair.** `scribe-note-audit` checks the note is true before it is signed.
+`em-code-advisor` then reads that note and says what it supports as a code. The audit
+protects the record, the coder protects the claim, and neither one bills for you.
+
+The remaining four stand alone: `inbox-reply-drafter` for the portal pile,
+`prior-auth-packet` for coverage criteria and peer-to-peer prep, `forms-and-letters` for
+the paperwork no scribe touches, and `discharge-summary-builder` for handoffs and the
+open loops that follow the patient out the door.
+
+Run any of them against a synthetic case first. They are new, and the output formats will
+want tightening against your own workflow before you lean on them.
 
 ## Repo layout
 

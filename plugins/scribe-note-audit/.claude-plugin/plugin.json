@@ -1,0 +1,24 @@
+{
+  "name": "scribe-note-audit",
+  "version": "1.0.0",
+  "description": "Audit an AI scribe's draft note before the clinician signs it, hunting for invented specifics, normals nobody examined, misattributed statements, and flattened medical decision-making. Use when the user pastes a scribe draft, ambient AI note, auto-generated H&P, or auto-generated discharge summary and asks to check it, clean it up, edit it, or find what the AI got wrong before signing. Produces a line-level correction list, never a rewritten note.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "ai-scribe",
+    "documentation",
+    "audit",
+    "verification",
+    "note-review",
+    "ambient-ai"
+  ]
+}

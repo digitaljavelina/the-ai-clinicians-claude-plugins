@@ -1,0 +1,22 @@
+{
+  "name": "differential-challenger",
+  "version": "1.0.0",
+  "description": "Argue against a clinician's working diagnosis or plan instead of answering for them, testing for anchoring, premature closure, and the demographic gaps where evidence stops transferring. Use when the user says here is my differential or my working diagnosis and asks what they are missing, asks to be challenged, asks to poke holes in their reasoning, wants a devil's advocate, or wants to think a case through. Never produces a diagnosis and never ranks a differential.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "differential-diagnosis",
+    "clinical-reasoning",
+    "cognitive-bias",
+    "education"
+  ]
+}

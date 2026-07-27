@@ -1,0 +1,23 @@
+{
+  "name": "prior-auth-packet",
+  "version": "1.0.0",
+  "description": "Build a prior authorization request or letter of medical necessity around the payer's own coverage criteria, mapping each criterion to the documentation that meets it and naming the ones that are not met, plus a peer-to-peer prep sheet. Use when the user asks for help with a prior auth, PA, precert, letter of medical necessity, coverage exception, formulary exception, or a peer-to-peer review, or says prior auth is eating their day. Produces a draft for the clinician to verify and sign.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "prior-authorization",
+    "medical-necessity",
+    "payer",
+    "peer-to-peer",
+    "documentation"
+  ]
+}
