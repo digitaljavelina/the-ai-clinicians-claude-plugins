@@ -1,0 +1,24 @@
+{
+  "name": "phi-redactor",
+  "version": "1.0.0",
+  "description": "De-identify PHI in clinical text and documents entirely on the local machine. Removes patient and provider names, dates, MRNs, SSNs, phone numbers, addresses, emails, and other identifiers, replacing each with a category tag. Uses Microsoft Presidio plus a clinical NER transformer (obi/deid_roberta_i2b2) that catches names in free-text prose that general models miss. Reads .txt, .md, .pdf, .docx, .xlsx, and .pptx. Model libraries are forced into offline mode before they load, so a redaction run makes no network call. Also offers a reversible mode that writes a local key, so text can be de-identified, processed by another tool, then restored.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "phi",
+    "de-identification",
+    "hipaa",
+    "privacy",
+    "presidio",
+    "offline"
+  ]
+}

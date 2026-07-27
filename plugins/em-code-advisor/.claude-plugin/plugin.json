@@ -1,0 +1,23 @@
+{
+  "name": "em-code-advisor",
+  "version": "1.0.0",
+  "description": "Assign the correct E/M (Evaluation and Management) code from a clinical note and justify it element by element against the 2021/2023 CPT MDM grid and time thresholds, across office/outpatient, hospital inpatient/observation, emergency department, nursing facility, and home/residence settings. Codes the documentation rather than the encounter, binds every code and minute threshold to bundled reference tables instead of recalling them, refuses to invent a code or report a confidence percentage, and returns documentation gaps as provider queries rather than guesses.",
+  "author": {
+    "name": "Digital Javelina",
+    "email": "mike@digitaljavelina.com"
+  },
+  "homepage": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "repository": "https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "clinical",
+    "healthcare",
+    "coding",
+    "billing",
+    "cpt",
+    "evaluation-and-management",
+    "documentation"
+  ]
+}

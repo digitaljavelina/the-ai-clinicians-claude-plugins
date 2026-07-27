@@ -1,0 +1,115 @@
+[SYNTHETIC - FICTIONAL PATIENT - NOT REAL CLINICAL DATA]
+Progress Note - Internal Medicine Teaching Service
+Example General Hospital - Fictional Medical Center
+Service date: 07/26/2026 08:17 AM
+Hospital day: 3
+Room: East Tower 7B-7422
+Encounter ID: ENC-FAKE-20260726-7422
+Visit CSN: CSN-000-771-2244
+Patient Identifiers
+Patient legal name: Riley DemoTest Placeholder-McFakerson
+Preferred name: Riley Demo
+Previous name: River Example-Null
+DOB: 01/23/1932
+Age: 94 years
+Sex: F
+Pronouns: she/her
+MRN: MRN-FAKE-00938471
+Account: ACCT-77-445599
+Chart #: CHART-FAKE-22019
+SSN: 123-45-6789
+Medicare ID: 1EG4-TE5-MK73
+Policy: PLAN-FAKE-774411
+Driver license: AZ-DL-FICTION-8821
+Passport: X00000000
+Tribal ID: TID-FAKE-4402
+Home address: 404 Imaginary Wash Drive, Apt 12B, Phoenix, AZ 85004
+Mailing address: PO Box 9090, Cactus County, AZ 85099
+Phone: (602) 555-0198
+Mobile: (480) 555-0144
+Fax: (602) 555-0199
+Email: riley.demotest@example.test
+Portal handle: riley-demo-7422
+Emergency contact: Morgan Placeholder, daughter, (623) 555-0188, morgan.placeholder@example.test
+Caregiver: Taylor Fakeperson, home aide, badge CARE-FAKE-6012
+Employer: Demonstration Quilt Museum, employee ID EMP-FAKE-1182
+Pharmacy: ExampleCare Pharmacy #404, 88 Practice Loop, Tempe, AZ 85281, phone (480) 555-0120
+Care Team and Facility Identifiers
+Attending: Dr. Alex Demo, NPI 1999999991, pager 602-555-0101, alex.demo@examplehospital.test
+Resident: Jamie Testcase, MD, state license AZ-MD-FAKE-7788
+Nurse: Casey Placeholder, RN, employee ID RN-FAKE-2314
+Clinic callback: (602) 555-0166
+Unit fax: (602) 555-0177
+Facility URL: https://portal.examplehospital.test/patient/MRN-FAKE-00938471
+Device IP seen in portal audit: 192.0.2.44
+IPv6: 2001:db8:85a3::8a2e:370:7334
+Telehealth device serial: TAB-FAKE-2026-000447
+Home scale serial: SCALE-FAKE-991100
+Implanted loop recorder serial: ILR-FAKE-55667788
+UDI: (01)00000000000000(17)300101
+Vehicle for discharge planning: 2011 Blue Examplevan, VIN 1FAKE000000000001, plate AZ FAKE17
+Photo on file: face-placeholder-riley-demotest.jpg
+Voiceprint ID: VOICE-FAKE-3301
+Fingerprint template hash: fp_fake_9f2c1a77
+Retina scan ID: RET-FAKE-5502
+Chief Concern
+Follow-up for community-acquired pneumonia, mild AKI, and discharge readiness.
+Subjective
+Riley DemoTest Placeholder-McFakerson is a fictional 94-year-old admitted 07/24/2026 from
+Example Sunrise Assisted Living after fever, cough, and poor intake. Daughter Morgan Placeholder
+reports that Riley was last at baseline on 07/21/2026 and became confused on 07/23/2026.
+Overnight she slept better, ate half of breakfast, and denies chest pain. She still has cough
+but no dyspnea at rest.
+The patient asks that discharge instructions also be sent to caregiver Taylor Fakeperson at
+taylor.fakeperson@example.test and to the assisted living nurse station fax (602) 555-0199. She
+gives permission for the team to call Morgan Placeholder at (623) 555-0188 today after rounds.
+She requests that no voicemail be left on her old landline (602) 555-0198 because it is shared
+
+in the activity room.
+Review of Systems
+Positive for cough, fatigue, decreased appetite, and mild confusion improving since admission.
+Negative for chest pain, hemoptysis, abdominal pain, dysuria, focal weakness, new rash, or fall
+since arrival.
+Objective
+Vitals 07/26/2026 07:42: T 98.6 F, HR 84, BP 128/72, RR 18, SpO2 94% on room air, weight 48.2
+kg.
+General: elderly fictional patient sitting in chair, answers questions slowly but appropriately.
+HEENT: mucous membranes moist. No oral lesions.
+CV: regular rhythm, no new murmur. Peripheral pulses intact.
+Pulm: faint crackles at right base, improved from admission. No accessory muscle use.
+Abd: soft, non-tender, no guarding.
+Skin: no pressure injury. Wristband shows MRN-FAKE-00938471 and DOB 01/23/1932.
+Neuro: alert to person and hospital, not exact date. Moves all extremities.
+Labs and Results
+CBC 07/26/2026 05:31: WBC 8.1, Hgb 10.9, Plt 244.
+BMP 07/26/2026 05:31: Na 136, K 4.1, Cl 102, CO2 24, BUN 27, Cr 1.24, glucose 112.
+Urine culture collected 07/24/2026 21:03 under specimen ID SPEC-FAKE-66091: no growth to date.
+Blood culture accession BCX-FAKE-20260724-A: no growth at 36 hours.
+Chest X-ray accession IMG-FAKE-774420 dated 07/24/2026: right lower lobe opacity, no effusion.
+Medication barcode scan ID MEDSCAN-FAKE-000781 for ceftriaxone dose on 07/25/2026 21:00.
+Assessment
+Fictional 94-year-old Riley DemoTest Placeholder-McFakerson with improving community-acquired
+pneumonia, resolving AKI likely from dehydration, and improving delirium. She remains
+patient-data-free because all names, numbers, addresses, and identifiers in this note are
+invented for redaction practice.
+Plan
+1. Pneumonia: continue ceftriaxone today. If afebrile and oxygen stable, transition to oral
+antibiotic at discharge. Do not invent final duration; confirm with supervising clinician and
+local protocol.
+2. AKI: encourage oral intake. Repeat BMP tomorrow 07/27/2026. Avoid NSAIDs. Review outpatient
+lisinopril restart after creatinine returns closer to baseline.
+3. Delirium risk: lights on during day, sleep hygiene overnight, hearing aids in place, daughter
+Morgan Placeholder may visit after 10:00 AM.
+4. Discharge planning: likely return to Example Sunrise Assisted Living, 77 Fictional Mesa Road,
+Scottsdale, AZ 85251, pending PT note and medication reconciliation. Case manager Sam DemoCase
+to call facility nurse Lexi Placeholder at (602) 555-0133.
+5. Communication: call Morgan Placeholder at (623) 555-0188 after rounds. Send de-identified
+teaching copy only to learners. Do not send this synthetic note to any real clinical system.
+Signatures
+Electronically signed by Jamie Testcase, MD at 07/26/2026 09:04 AM from workstation
+WS-FAKE-7B-09.
+
+Countersigned by Alex Demo, MD, NPI 1999999991, at 07/26/2026 11:32 AM.
+[SYNTHETIC - FICTIONAL PATIENT - NOT REAL CLINICAL DATA]
+
+

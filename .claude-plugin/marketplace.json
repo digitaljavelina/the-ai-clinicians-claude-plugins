@@ -9,6 +9,18 @@
       "source": "./plugins/bag-submission",
       "description": "Package a prompt, skill, or workflow into a finished Bag Submission post for The AI Clinicians' Medical Bag, with the community's three rules enforced and a patient-data-free check. Also saves the entry as a markdown file",
       "version": "1.1.2"
+    },
+    {
+      "name": "em-code-advisor",
+      "source": "./plugins/em-code-advisor",
+      "description": "Assign the correct E/M code from a clinical note and justify it element by element against the 2021/2023 CPT MDM grid and time thresholds, across office, inpatient, observation, ED, nursing facility, and home settings. Codes only what the documentation supports and returns gaps as provider queries",
+      "version": "1.0.0"
+    },
+    {
+      "name": "phi-redactor",
+      "source": "./plugins/phi-redactor",
+      "description": "De-identify PHI in clinical text and documents entirely on the local machine, with no network call at redaction time. Reads .txt, .md, .pdf, .docx, .xlsx, and .pptx, and offers a reversible mode so text can be de-identified, processed elsewhere, then restored. Requires a one-time model download",
+      "version": "1.0.0"
     }
   ]
 }
