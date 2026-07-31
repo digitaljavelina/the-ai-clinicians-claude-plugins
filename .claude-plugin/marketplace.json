@@ -66,6 +66,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "pubmed-search",
+      "source": "./plugins/pubmed-search",
+      "description": "Run a PubMed search from a plain-English description and rate every result 1-5 on evidence strength. Returns full citations with clickable links and a trust weight per article. Builds a field-tagged MeSH query instead of a keyword string, shows the query PubMed actually ran, and flags results whose population or setting does not match the question",
+      "version": "1.0.0"
+    },
+    {
       "name": "differential-challenger",
       "source": "./plugins/differential-challenger",
       "description": "Argue against a clinician's working diagnosis or plan instead of answering for them, testing for anchoring, premature closure, and the demographic gaps where evidence stops transferring. Never produces a diagnosis",

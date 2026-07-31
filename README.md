@@ -30,12 +30,34 @@ Then install a plugin:
 
 # Reasoning and evidence
 /plugin install evidence-brief@the-ai-clinicians-claude-plugins
+/plugin install pubmed-search@the-ai-clinicians-claude-plugins
 /plugin install differential-challenger@the-ai-clinicians-claude-plugins
 
 # Adoption and policy
 /plugin install ai-tool-evaluator@the-ai-clinicians-claude-plugins
 /plugin install ai-consent-and-policy@the-ai-clinicians-claude-plugins
 ```
+
+### Using these in the Claude app instead
+
+If you use Claude in the browser, desktop, or mobile app rather than Claude Code, install
+a plugin's skill by uploading it as a `.zip` under **Settings → Capabilities → Skills**.
+
+`pubmed-search` is packaged and ready to upload:
+
+[**Download pubmed-search.zip**](https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins/releases/download/pubmed-search-v1.0.0/pubmed-search.zip)
+
+1. Download the file. Do not unzip it.
+2. Open Claude, then **Settings → Capabilities → Skills**.
+3. Choose **Upload skill** and pick the `.zip`.
+4. Start a new chat and describe the search you want.
+
+Skills need a paid Claude plan, and the setting that lets Claude run code must be on,
+since the search runs a small Python script.
+
+For any other plugin here, zip the folder at `plugins/<name>/skills/<name>/` and upload
+that. Anything requiring a local install, `phi-redactor` in particular, is Claude Code
+only.
 
 ## Available Plugins
 
@@ -51,18 +73,20 @@ Then install a plugin:
 | `forms-and-letters` | 1.0.0 | Draft the non-clinical paperwork pile no scribe touches. FMLA and disability forms, work and school notes, accommodation letters, DME and home health justification, camp and sports forms, and referral letters. |
 | `discharge-summary-builder` | 1.0.0 | Assemble a discharge summary, transfer note, or service handoff from fragmented source documents, with a dedicated pass for what is still unresolved and who owns it after the patient leaves. |
 | `evidence-brief` | 1.0.0 | Answer a clinical question with the evidence separated by how well it is established and every citation either retrieved and checkable or explicitly marked absent. Refuses to invent a reference under any circumstance. |
+| `pubmed-search` | 1.0.0 | Run a PubMed search from a plain-English description and rate every result 1-5 on evidence strength. Returns title, date, lead author, journal, volume, pages, a clickable link, and a trust weight per article. Builds a field-tagged MeSH query rather than a keyword string (searching plain `B-ALL` gets silently remapped to Burkitt lymphoma), shows the query PubMed actually ran so it can be audited, reads every abstract to score it, and flags results whose population or clinical setting does not match the question. |
 | `differential-challenger` | 1.0.0 | Argue against a clinician's working diagnosis or plan instead of answering for them, testing for anchoring, premature closure, and the demographic gaps where evidence stops transferring. Never produces a diagnosis. |
 | `ai-consent-and-policy` | 1.0.0 | Build the patient-facing script for disclosing an AI scribe, handle the opt-out gracefully, and assemble the questions a practice must answer before recording encounters. Produces scripts and a question list for counsel, never a legal determination. |
 | `ai-tool-evaluator` | 1.0.0 | Design a real trial of a clinical AI tool before buying it, with a baseline measured first, a decision rule written in advance, and the questions that separate a demo from a workflow. Never recommends a specific product. |
 
 ### Prerequisites
 
-Only `phi-redactor` has any. Every other plugin here is prompt-only: no runtime, no
-network, no install beyond the plugin itself.
+Two plugins need something. The rest are prompt-only: no runtime, no network, no
+install beyond the plugin itself.
 
 | Plugin | Requires |
 | ------ | -------- |
 | `phi-redactor` | [uv](https://docs.astral.sh/uv/), plus a one-time model download of roughly 1.3 GB. Python itself is not required; uv provisions it. |
+| `pubmed-search` | Python 3 and an internet connection. No packages to install: the bundled script is standard library only, and NCBI E-utilities needs no API key. |
 | Everything else | Nothing. Reference tables, where a plugin uses them, are bundled. |
 
 `phi-redactor` runs a one-time setup that downloads the spaCy model and the clinical
@@ -100,6 +124,39 @@ Read the redacted output before trusting it. The tool biases toward over-redacti
 it prints a warning when something identifier-shaped survives, which usually means a
 PDF line-wrap split a value. Scanned or image-only PDFs are refused rather than written
 out empty-but-clean-looking.
+
+### pubmed-search
+
+Describe the search in plain English. Say what you are looking for, in what population,
+over what time window, and how many results you want.
+
+> Perform a PubMed search for the use of blinatumomab in pediatric B-ALL, newly
+> diagnosed, no earlier than 2025.
+
+Ten results by default, each returned with title, publication date, lead author, journal,
+volume, page numbers, a clickable PubMed link, and a 1-5 trust weight shown as green
+spheres.
+
+The weight rates design and execution, never the direction of the finding. A dramatic
+result in a 20-patient single-arm study is still a 2. A null result from a
+3,000-patient randomized trial is still a 5.
+
+Two things it does that a search box will not:
+
+**It shows you the query it ran.** PubMed silently rewrites terms it does not recognize,
+and the rewrite is often wrong. The plain text `B-ALL` gets remapped to
+`"burkitt lymphoma"[MeSH Terms]`, a different disease entirely, and nothing in the
+results tells you. The skill builds a field-tagged MeSH query and prints the translation
+so you can audit it before trusting the list.
+
+**It flags what does not belong.** Query syntax cannot separate newly diagnosed from
+relapsed disease when both use the word "consolidation," and a pediatric age filter still
+admits adult trials that enrolled one adolescent. Because every abstract is read anyway to
+score it, the population and setting get checked at the same time and off-target results
+are marked in place rather than quietly padding the list.
+
+Pairs with `evidence-brief`, which answers a clinical question from evidence you already
+have. `pubmed-search` goes and gets the evidence, then rates it.
 
 ### The ten clinical workflow plugins
 
