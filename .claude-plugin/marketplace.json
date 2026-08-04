@@ -68,8 +68,8 @@
     {
       "name": "pubmed-search",
       "source": "./plugins/pubmed-search",
-      "description": "Run a PubMed search from a plain-English description and rate every result 1-5 on evidence strength. Returns full citations with clickable links and a trust weight per article. Builds a field-tagged MeSH query instead of a keyword string, shows the query PubMed actually ran, and flags results whose population or setting does not match the question",
-      "version": "1.0.0"
+      "description": "Run a PubMed search from a plain-English description and rate every result 1-5 on evidence strength. Returns full citations with clickable links and a trust weight per article. Builds a field-tagged MeSH query instead of a keyword string, shows the query PubMed actually ran, flags results whose population or setting does not match the question, and publishes a web page that separates fielding dates from publication dates and keeps sample size and response rate with every figure",
+      "version": "1.1.0"
     },
     {
       "name": "differential-challenger",

@@ -45,7 +45,7 @@ a plugin's skill by uploading it as a `.zip` under **Settings → Capabilities �
 
 `pubmed-search` is packaged and ready to upload:
 
-[**Download pubmed-search.zip**](https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins/releases/download/pubmed-search-v1.0.0/pubmed-search.zip)
+[**Download pubmed-search.zip**](https://github.com/digitaljavelina/the-ai-clinicians-claude-plugins/releases/download/pubmed-search-v1.1.0/pubmed-search.zip)
 
 1. Download the file. Do not unzip it.
 2. Open Claude, then **Settings → Capabilities → Skills**.
@@ -73,7 +73,7 @@ only.
 | `forms-and-letters` | 1.0.0 | Draft the non-clinical paperwork pile no scribe touches. FMLA and disability forms, work and school notes, accommodation letters, DME and home health justification, camp and sports forms, and referral letters. |
 | `discharge-summary-builder` | 1.0.0 | Assemble a discharge summary, transfer note, or service handoff from fragmented source documents, with a dedicated pass for what is still unresolved and who owns it after the patient leaves. |
 | `evidence-brief` | 1.0.0 | Answer a clinical question with the evidence separated by how well it is established and every citation either retrieved and checkable or explicitly marked absent. Refuses to invent a reference under any circumstance. |
-| `pubmed-search` | 1.0.0 | Run a PubMed search from a plain-English description and rate every result 1-5 on evidence strength. Returns title, date, lead author, journal, volume, pages, a clickable link, and a trust weight per article. Builds a field-tagged MeSH query rather than a keyword string (searching plain `B-ALL` gets silently remapped to Burkitt lymphoma), shows the query PubMed actually ran so it can be audited, reads every abstract to score it, and flags results whose population or clinical setting does not match the question. |
+| `pubmed-search` | 1.1.0 | Run a PubMed search from a plain-English description and rate every result 1-5 on evidence strength. Returns title, date, lead author, journal, volume, pages, a clickable link, and a trust weight per article. Builds a field-tagged MeSH query rather than a keyword string (searching plain `B-ALL` gets silently remapped to Burkitt lymphoma), shows the query PubMed actually ran so it can be audited, reads every abstract to score it, and flags results whose population or clinical setting does not match the question. Publishes a web page of every search that separates fielding dates from publication dates and keeps sample size, response rate, and denominator beside each figure. |
 | `differential-challenger` | 1.0.0 | Argue against a clinician's working diagnosis or plan instead of answering for them, testing for anchoring, premature closure, and the demographic gaps where evidence stops transferring. Never produces a diagnosis. |
 | `ai-consent-and-policy` | 1.0.0 | Build the patient-facing script for disclosing an AI scribe, handle the opt-out gracefully, and assemble the questions a practice must answer before recording encounters. Produces scripts and a question list for counsel, never a legal determination. |
 | `ai-tool-evaluator` | 1.0.0 | Design a real trial of a clinical AI tool before buying it, with a baseline measured first, a decision rule written in advance, and the questions that separate a demo from a workflow. Never recommends a specific product. |
@@ -141,7 +141,7 @@ The weight rates design and execution, never the direction of the finding. A dra
 result in a 20-patient single-arm study is still a 2. A null result from a
 3,000-patient randomized trial is still a 5.
 
-Two things it does that a search box will not:
+Three things it does that a search box will not:
 
 **It shows you the query it ran.** PubMed silently rewrites terms it does not recognize,
 and the rewrite is often wrong. The plain text `B-ALL` gets remapped to
@@ -154,6 +154,16 @@ relapsed disease when both use the word "consolidation," and a pediatric age fil
 admits adult trials that enrolled one adolescent. Because every abstract is read anyway to
 score it, the population and setting get checked at the same time and off-target results
 are marked in place rather than quietly padding the list.
+
+**It publishes a page, every time.** The chat list is the working copy and it scrolls
+away. Every search also renders a dark-mode web page you can keep or share, and it leads
+with what the result set shows rather than repeating the citations in HTML. Rates that
+ought to agree and do not go on one shared axis. Fielding dates run against publication
+dates on a timeline, which earns its place here because a paper published this year
+routinely carries data from two years earlier, and citing by publication date reports
+stale behavior as current practice. Sample size, response rate, and denominator travel
+with every figure, the final query appears verbatim so the search can be rerun or argued
+with, and anything screened out stays visible with the reason it matched.
 
 Pairs with `evidence-brief`, which answers a clinical question from evidence you already
 have. `pubmed-search` goes and gets the evidence, then rates it.

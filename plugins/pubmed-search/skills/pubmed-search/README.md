@@ -64,6 +64,17 @@ from relapsed when both use the word "consolidation." Because the skill reads
 every abstract anyway to rate it, it screens the population and setting at the
 same time and marks anything off-target rather than quietly padding the list.
 
+**Publishes a page, every time.** The chat list is the working copy. Every search
+also renders a dark-mode web page you can share or keep, and it leads with what
+the result set actually shows rather than repeating the citations in HTML. Rates
+that ought to agree and do not get plotted on one shared axis. Fielding dates run
+against publication dates on a timeline, because in fast moving fields a paper
+published this year routinely carries data from two years ago, and citing by
+publication date reports stale behavior as current. Sample size, response rate,
+and denominator travel with every figure. The final query appears verbatim so the
+search can be rerun or argued with, and anything screened out stays visible with
+the reason it matched.
+
 The rubric comes from Lantern, an iOS app that explains cancer clinical trials
 and appraises studies in plain language. `references/weight-rubric.md` carries it
 verbatim along with its calibration anchors.

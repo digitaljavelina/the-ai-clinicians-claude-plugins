@@ -1,6 +1,6 @@
 ---
 name: pubmed-search
-description: Run a PubMed literature search from a plain-English description of what to look for, then rate every result 1-5 on evidence strength using the Lantern app's appraisal rubric. Returns title, publication date, lead author, journal, volume, page numbers, a clickable PubMed link, and a green-sphere trust weight for each article. Use this whenever the user asks to search PubMed, find studies or papers or trials or literature on a clinical or biomedical topic, wants a literature search or lit review, mentions MeSH terms or PMIDs or E-utilities, asks "what's published on X", "find me studies about Y", "is there evidence for Z", "any recent trials of", or wants papers on a drug, disease, or intervention narrowed by date, age group, or study type. Prefer this over a general web search for anything biomedical, since it queries PubMed directly and grades the strength of what it finds.
+description: Run a PubMed literature search from a plain-English description of what to look for, then rate every result 1-5 on evidence strength using the Lantern app's appraisal rubric. Returns title, publication date, lead author, journal, volume, page numbers, a clickable PubMed link, and a green-sphere trust weight for each article. Use this whenever the user asks to search PubMed, find studies or papers or trials or literature on a clinical or biomedical topic, wants a literature search or lit review, mentions MeSH terms or PMIDs or E-utilities, asks "what's published on X", "find me studies about Y", "is there evidence for Z", "any recent trials of", or wants papers on a drug, disease, or intervention narrowed by date, age group, or study type. Prefer this over a general web search for anything biomedical, since it queries PubMed directly and grades the strength of what it finds. Every search also publishes a dark-mode web page of the appraised results, separating fielding dates from publication dates and showing sample sizes and response rates alongside each figure.
 ---
 
 # PubMed search with trust weights
@@ -21,7 +21,8 @@ appraisal of each abstract, not a lookup from the publication type tag.
 3. Run `scripts/pubmed_search.py`.
 4. Audit what PubMed actually searched.
 5. Judge each article against the rubric.
-6. Render the list.
+6. Render the list in chat.
+7. Publish the results as a web page. Always, without being asked.
 
 Work through them in order. Step 4 exists because skipping it is how a search
 ends up describing the wrong disease with total confidence.
@@ -275,7 +276,7 @@ number that matches the verdict. Judge only from the `abstract` field the script
 returned. Never move a number because the finding was impressive or
 disappointing, and never infer rigor from the journal's name.
 
-## Step 6: Render the list
+## Step 6: Render the list in chat
 
 Lead with the search summary, then the numbered results, then the boundary note.
 
@@ -327,10 +328,68 @@ something real about the state of the literature.
 Close with a brief note that the weights rate evidence strength only, not
 applicability to any individual patient.
 
-Then offer, in one line, to publish the list as a shareable page with real
-rendered spheres. Offer it; do not publish unasked. A result set worth keeping is
-usually one the user wants to send to someone, and an artifact survives the
+## Step 7: Publish the page
+
+**Every search gets a rendered web page. Do not ask first, and do not offer it as
+an option.** The chat list is the working copy; the page is the deliverable. A
+result set worth running is one worth keeping, and an artifact outlives the
 terminal scrollback.
+
+Load the `artifact-design` skill before writing any markup, write the page to a
+file, then publish it with the `Artifact` tool. Give it a `favicon` and a
+one-sentence `description`. Republishing the same file path keeps the same URL,
+so a corrected search updates in place rather than minting a second link.
+
+### Lead with the finding, not the citation list
+
+A page that is only the chat list in HTML is a wasted artifact. Open with
+whatever the result set actually shows, drawn rather than described:
+
+- **Numbers that should agree but do not** go on one shared axis, each plotted
+  point labeled with its population, the exact behavior measured, and its date.
+  Incomparability is the finding; make it visible before any prose.
+- **Fielding date against publication date** goes on a shared timeline, one row
+  per study, with the wait until publication in the emphasis color. In fast
+  moving fields this gap is often the most useful thing on the page.
+- **A weight distribution** that clusters at 1 and 2 is itself a finding. Say so
+  at the top rather than leaving the reader to total up spheres.
+
+Then the appraised studies, then anything screened out, then what it means.
+
+### Non-negotiable page elements
+
+- **Spheres render as real filled circles**, never emoji, and always draw all 5
+  positions so the meter reads at a glance.
+- **Fielding date and publication date are separate labeled fields** on every
+  study, never merged into one line. Where they differ by more than a year, say
+  the lag in months.
+- **Sample size, response rate, and denominator** sit with the study, not buried
+  in prose. A percentage without its denominator is the error this skill exists
+  to prevent.
+- **Every study links to its PubMed record**, with the PMID visible as text.
+- **The final translated query appears verbatim** in a copyable block, so the
+  reader can rerun or argue with it.
+- **Anything screened out stays visible**, collapsed if long, with the reason it
+  matched. A reader who sees why result 4 was dropped learns something about the
+  query.
+- **The rubric boundary line** goes in the footer: the weights rate evidence
+  strength only, never applicability to any particular patient.
+- **Figures from outside the search** (a vendor report, a professional-body
+  survey) must be visually distinguished from PubMed results and labeled as
+  such, including whether they were peer reviewed.
+
+### House style
+
+Dark mode is the default. Build both themes through CSS custom properties so the
+viewer's toggle works in both directions.
+
+Use the validated clinical palette rather than inventing one: teal `#199e70` for
+measurement and evidence weight, burnt orange `#d95926` for lag, caution, and
+flags, on ground `#1a1a19`, with `#c3c2b7` body text and `#898781` for muted
+labels. That pairing has been checked for colour-vision deficiency (ΔE 9.4) and
+holds a contrast ratio of at least 3:1. Set every figure in a monospace face
+with `tabular-nums` so columns of numbers line up, and keep running prose in a
+neutral sans at roughly 65 characters.
 
 ## The boundary
 
