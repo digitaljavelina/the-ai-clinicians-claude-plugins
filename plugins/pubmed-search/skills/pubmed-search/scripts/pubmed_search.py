@@ -460,7 +460,7 @@ def main() -> int:
         description="PubMed search returning citation fields plus abstracts for appraisal.")
     p.add_argument("--term", required=True,
                    help="PubMed query, field tags and boolean operators included.")
-    p.add_argument("--retmax", type=int, default=10, help="Results to return (default 10).")
+    p.add_argument("--retmax", type=int, default=50, help="Results to return (default 50).")
     p.add_argument("--retstart", type=int, default=0, help="Offset, for paging past page one.")
     p.add_argument("--sort", choices=["relevance", "date"], default="relevance")
     p.add_argument("--mindate", help="Earliest date, e.g. 2025 or 2025/03/01.")

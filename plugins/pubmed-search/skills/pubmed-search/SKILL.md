@@ -36,7 +36,13 @@ earlier than 2025" is four concepts plus a date floor.
 
 Note the filters: date range, age group, study type, language, humans only.
 
-Default to **10 results** unless the user names a number.
+Default to **50 results** unless the user names a number.
+
+Fifty is a lot of abstracts to read and score, and every one of them has to be
+read, since the weight is an appraisal rather than a lookup. Say up front that a
+full pass is coming so the wait is expected. When a question is narrow enough
+that the answer is obviously in the top handful, or when the user signals they
+want a quick look, drop to 10 and say you did.
 
 Default to **relevance** sort. Switch to date sort when the user asks for the
 newest, the latest, or what just came out. Relevance is usually the better
@@ -197,7 +203,7 @@ cd "$(dirname "$(find ~ -name pubmed_search.py -path '*pubmed-search*' 2>/dev/nu
 python3 scripts/pubmed_search.py \
   --term '<the query>' \
   --mindate 2025 \
-  --retmax 10 \
+  --retmax 50 \
   --sort relevance \
   --out /tmp/pubmed-results.json
 ```
@@ -207,7 +213,7 @@ If you already know the skill directory, just `cd` there and run
 parentheses survive the shell. Write to `--out` and read the file rather than
 piping a large JSON blob through stdout.
 
-Flags: `--retmax` (default 10), `--retstart` for paging, `--sort relevance|date`,
+Flags: `--retmax` (default 50), `--retstart` for paging, `--sort relevance|date`,
 `--mindate` / `--maxdate` / `--datetype`, `--no-enrich` to skip PMC full-text
 lookups, `--out` for the JSON path.
 
@@ -233,7 +239,7 @@ plain HTTP, so fetch the same three endpoints directly with whatever web fetch
 tool is available and carry on from Step 4 with the same data:
 
 ```
-https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=<urlencoded>&retmax=10&sort=relevance&mindate=2025&maxdate=3000&datetype=pdat&retmode=json&tool=lantern-skill
+https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=<urlencoded>&retmax=50&sort=relevance&mindate=2025&maxdate=3000&datetype=pdat&retmode=json&tool=lantern-skill
 https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=<comma,separated,pmids>&retmode=json&tool=lantern-skill
 https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=<comma,separated,pmids>&rettype=abstract&retmode=xml&tool=lantern-skill
 ```
@@ -415,8 +421,9 @@ The output rates studies. The clinical judgment stays with the reader.
 
 - **No results.** Report the count honestly, show the query, and suggest the
   specific relaxation most likely to help rather than a generic retry.
-- **More than 20 results.** Each one needs its abstract read and judged, so say
-  what that will take before starting.
+- **Large result sets.** Fifty is the default and every one of them gets its
+  abstract read and judged, so say what that will take before starting. Above
+  fifty, say it twice: the appraisal is the slow part, not the search.
 - **A specific PMID.** Search `<pmid>[uid]` to pull one record through the same
   pipeline.
-- **Paging.** `--retstart 10` gets results 11-20 with the same query.
+- **Paging.** `--retstart 50` gets results 51-100 with the same query.
