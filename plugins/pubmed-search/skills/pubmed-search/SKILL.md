@@ -63,13 +63,26 @@ AND ("newly diagnosed"[tiab] OR "de novo"[tiab] OR frontline[tiab] OR "first-lin
 
 ### Always pair a MeSH term with text words
 
-MeSH indexing lags publication by weeks to months. A paper published last month
-usually has no MeSH terms at all, so a MeSH-only query silently drops exactly the
-recent work a date-floored search is asking for. Pairing every MeSH term with
-`[tiab]` synonyms catches both the indexed back catalog and the fresh records.
+MEDLINE indexing is automated. Since April 2022 every indexed journal is tagged
+algorithmically, by the MTIX neural network since April 2024, with human curation
+of selected sets. NLM's goal is MeSH indexing within 24 hours of a citation
+appearing in PubMed, against a 145-day average for the old fully-human process.
+The publication-lag argument for pairing in text words no longer holds. Two other
+reasons replace it.
 
-The reverse also holds: text words alone miss papers that use different
-vocabulary for the same concept, which is what MeSH exists to solve. Use both.
+First, the algorithm tags from title and abstract only, so its headings inherit
+whatever the abstract left out. Second, a large slice of PubMed never receives
+MeSH at all: ahead-of-print and publisher-supplied citations, records still in
+bibliographic data review, and PubMed content outside MEDLINE scope. A MeSH-only
+query silently drops all of it.
+
+Pairing every MeSH term with `[tiab]` synonyms catches both the tagged catalog and
+the untagged records. The reverse also holds: text words alone miss papers that
+use different vocabulary for the same concept, which is what MeSH exists to solve.
+Use both.
+
+Source: NLM Automated Indexing FAQs, KA-05326
+(https://support.nlm.nih.gov/kbArticle/?pn=KA-05326), checked 2026-08-14.
 
 ### Field tags worth knowing
 
